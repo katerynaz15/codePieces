@@ -1,0 +1,55 @@
+<html>
+	<body>
+        <style>
+            td {
+                width: 50px;
+                height: 50px;
+            }
+            #mySubmit {
+                margin: 15px 0px 0px 0px; 
+            }
+            #firstColor {
+                margin: 15px 0px 0px 0px; 
+            }
+        </style>
+        
+		<input type="number" id="myCells" placeholder="Cell quantity" />
+        <input type="number" id="myColumns" placeholder="Column quantity" /> 
+        </br>
+        <input type="color" id="firstColor" />
+        <input type="color" id="lastColor" />
+        </br>
+        <input type="button" id="mySubmit" value="Result!" />
+        
+		<script>
+            mySubmit.onclick = function() {
+                var red1 = parseInt(firstColor.value.substr(1, 2), 16);
+                var green1 = parseInt(firstColor.value.substr(3, 2), 16);
+                var blue1 = parseInt(firstColor.value.substr(5, 2), 16);
+                var red2 = parseInt(lastColor.value.substr(1, 2), 16);
+                var green2 = parseInt(lastColor.value.substr(3, 2), 16);
+                var blue2 = parseInt(lastColor.value.substr(5, 2), 16);
+                    
+                var redDiff = Math.floor((red2-red1)/(parseInt(myColumns.value)*parseInt(myCells.value)));
+                var greenDiff = Math.floor((green2-green1)/(parseInt(myColumns.value)*parseInt(myCells.value)));
+                var blueDiff = Math.floor((blue2-blue1)/(parseInt(myColumns.value)*parseInt(myCells.value)));
+                
+                var count = 0;
+                    
+                var myTable = document.createElement("table");
+                document.body.appendChild(myTable);
+                for(var i=0; i<parseInt(myCells.value); i++) {
+                    var myTr = document.createElement("tr");
+                    myTable.appendChild(myTr);
+                    for(var j=0; j<parseInt(myColumns.value); j++) {
+                        var myTd = document.createElement("td");
+                        myTr.appendChild(myTd);
+                        
+                    myTd.style.backgroundColor = "rgb"+"("+(red1+count*redDiff)+","+(green1+count*greenDiff)+","+(blue1+count*blueDiff)+")";
+                        count++;
+                    }
+                }
+            }
+        </script>
+	</body>
+</html>
