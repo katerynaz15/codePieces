@@ -1,0 +1,39 @@
+<html>
+	<body>
+        <div>
+            <p id="mypar">Hello World!!</p>
+        </div>
+        
+		<style></style>
+        
+		<script>
+            mypar.style.marginLeft = "0px";
+            
+            var key = true;
+            var myStep = 1;
+            
+            function movingText() {
+                myInterval = setInterval(function() {
+                    if(key && parseInt(mypar.style.marginLeft)==500) {
+                       key = false;
+                       myStep = -1;
+                    }
+                    if(!key && parseInt(mypar.style.marginLeft)==0) {
+                        key = true;
+                        myStep = 1;
+                    }
+                mypar.style.marginLeft = (parseInt(mypar.style.marginLeft)+myStep) + "px";
+                }, 10);
+            }
+            
+                mypar.onmouseover = function() {
+                    clearInterval(myInterval);
+            }
+            
+                mypar.onmouseout = movingText;
+            
+            movingText();
+            
+        </script>
+	</body>
+</html>
