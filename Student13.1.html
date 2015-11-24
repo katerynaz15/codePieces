@@ -1,0 +1,26 @@
+<html>
+	<body>
+        <style></style>
+        
+		<p id="firstPar">If you are transitioning to a new career, write about your Bloc experience and how it prepared you for it. </p>
+        <textarea id="newText"></textarea>
+        <input type="button" id="newButton" value="Submit!">
+        
+		<script>
+            var parArray = ["Consider writing about the kinds of work you imagine yourself doing and the impact you wish it to have.", "Finally, you may include a list of the skills you are most proficient in as well as references to crowning achievements.Finally, you may include a list of the skills you are most proficient in as well as references to crowning achievements.", "The summary section should encapsulate the best you have to offer: your goals, your skills, your accomplishments, and your shining personality."];
+            var i=0;
+            var myInterval = setInterval(function() {
+                i++;
+                firstPar.innerHTML = parArray[i];
+                if(i==parArray.length-1) {
+                    i=-1;
+                }
+            }, 2000);
+            
+            newButton.onclick = function() {
+                parArray.push(newText.value);
+                newText.value = "";
+            };
+        </script>
+	</body>
+</html>
