@@ -1,0 +1,35 @@
+<html>
+	<body>
+        <style>
+            #mySquare {
+                width: 100px;
+                height: 100px;
+                background-color: aquamarine;
+                position: absolute;
+                top: 200px;
+                left: 50px;
+            }
+        </style>
+        
+        <div id="mySquare"></div>
+		<input type="text" id="myspeed" placeholder="Enter speed here" />
+        <input type="button" id="stopbutton" value="Stop" />
+        <input type="button" id="continuebutton" value="Continue" />
+            
+		<script>
+            continuebutton.onclick = function() {
+                var angle = 0;
+                var x = mySquare.offsetTop;
+                var y = mySquare.offsetLeft;  
+                
+                var myTimer = setInterval(function() {
+                    var stepX = parseInt(Math.sin(angle)*200);
+                    y+=20;
+                    angle += 0.1;
+                    mySquare.style.top = (x+stepX)+"px";
+                    mySquare.style.left = y+"px";
+                }, myspeed.value);
+            }
+        </script>
+	</body>
+</html>
