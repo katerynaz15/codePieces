@@ -1,0 +1,78 @@
+<html>
+	<body>
+        <input type="text" id="newText" placeholder="Enter your numbers" />
+        <input type="button" id="myButton" value="Add" />
+        <input type="button" id="myButton2" value="Multiply" />
+        <input type="button" id="myButton3" value="newMultiply" />
+        <input type="button" id="myButton4" value="Sort" />
+        <div class="mySum"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+		<style>
+            
+        </style>
+		<script>
+            var newText = document.getElementById("newText");
+            var newButton = document.getElementById("myButton");
+            var newButton2 = document.getElementById("myButton2");
+            var newButton3 = document.getElementById("myButton3");
+            var newButton4 = document.getElementById("myButton4");
+            var mySum = document.getElementsByClassName("mySum")[0];
+            var divBlock = document.getElementsByTagName("div");
+            newButton.onclick = function() {
+                var newArr = newText.value.split(", ");
+                var sum = 0;
+                for(var i=0; i<newArr.length; i++) {
+                    if(newArr[i]<0) {
+                        sum += parseFloat(newArr[i]);
+                    }
+                }
+                mySum.innerHTML = sum;
+            }
+            newButton2.onclick = function() {
+                console.time('someFunction1');
+                var newArr = newText.value.split(", ");
+                var mlt = 1;
+                var max = newArr[0];
+                var ind = 0; 
+                var min = Infinity;
+                ind2 = -1;
+                for(var i=0; i<newArr.length; i++) {
+                    if(parseFloat(newArr[i])>max) {
+                        ind = i;
+                        max = parseFloat(newArr[i]);
+                    }
+                    if(parseFloat(newArr[i])<min) {
+                        ind2 = i;
+                        min = parseFloat(newArr[i]);
+                    }
+                }
+                for(var i=ind+1; i<ind2; i++) {
+                    mlt *= newArr[i];
+                }
+                divBlock[1].innerHTML = mlt;
+                console.timeEnd('someFunction1');
+            }
+            newButton3.onclick = function() {
+                console.time('someFunction2');
+                var mlt = 1;
+                var arr = newText.value.split(", ");
+                var min = Math.min.apply(null, arr);
+                var max = Math.max.apply(null, arr);
+                var ind1 = arr.indexOf(min.toString());
+                var ind2 = arr.indexOf(max.toString());
+                for(var i=ind2+1; i<ind1; i++) {
+                    mlt *= arr[i];
+                }
+                divBlock[2].innerHTML = mlt;
+                console.timeEnd('someFunction2');
+            }
+            newButton4.onclick = function() {
+                var arr = newText.value.split(", ");
+                
+                divBlock[3].innerHTML = arr.sort(function(a,b){return parseFloat(a)-parseFloat(b);}).join(", ");
+            }
+        </script>
+	</body>
+</html>
