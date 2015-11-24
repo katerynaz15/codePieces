@@ -1,0 +1,121 @@
+<html>
+	<body>
+		<style></style>
+		<script>
+            var newArray = [1, 2, 3, 4, 5];
+            var myArray = newArray.splice(1, 3);
+                console.log(newArray, myArray);
+            
+            var newString = 3;
+            console.log(typeof(newString));
+            if(typeof(newString)=="number") {
+                console.log("Hello");
+            }
+            
+            var array1 = [2, 3, 4, 5, 5];
+            var string1 = array1.join(", ");
+            console.log(string1);
+            
+            var newWord = "Hello"
+            var myExamp = /h(e)l/gi;
+            var thisArray = [];
+            var newResult;
+            
+            while((newResult = myExamp.exec(newWord)) !== null) {
+                thisArray.push(newResult);
+                console.log(thisArray);
+            }
+            
+            var newWorld = "Hello world!"
+            var newReplace = newWorld.replace("ll", "ww");
+                console.log(newReplace);
+            
+            var zeroDel = Infinity;
+            //console.log(zeroDel);
+            if(isNaN(zeroDel) && typeof(zeroDel)=="number") {
+                alert("This is NaN");
+            } if (!isNaN(zeroDel) && typeof(zeroDel)=="number" && zeroDel!==Infinity) {
+                alert("This is a number");
+            } if (typeof(zeroDel)=="undefined") {
+                alert("This is undefined");
+            } if (zeroDel==Infinity) {
+                alert("This is Infinity");
+            }
+            
+            
+            var negativeNum = function() {
+                var sum = 0;
+                for(var i=0; i<arguments.length; i++) {
+                    if(arguments[i]<0) {
+                        break;
+                    } else {
+                        sum += arguments[i];
+                    }
+                } console.log(sum); 
+            }
+            negativeNum(2, 7, 9, -1, 5);
+
+            var newNumber = function(num) {
+                for(var i=2; i<num; i++) {
+                    if(num%i == 0) {
+                         console.log("not simple");
+                        return false;
+                    } 
+                } console.log("simple");
+            }
+            newNumber(7);
+        
+            //25
+                var newNum = function(num) {
+                    for(var i=0; i<num; i++) {
+                        if(num%i ==0) {
+                        console.log(i);
+                        }
+                    }
+                }
+                newNum(28);
+
+                //24
+                var newNum2 = function(num) {
+                    for(var i=num-1; i>0; i--) {
+                        if(num%i ==0) {
+                        console.log(i);
+                        }
+                    }
+                }
+                newNum2(28);
+
+                //27
+                var newNum3 = function(num) {
+                    for(var i=1; i<num; i++) {
+                        if(i%10 ==5) {
+                        console.log(i);
+                        }
+                    }
+                }
+                newNum3(100);
+            //39
+            var newFunction = function(str) {
+                var myCount = [];
+                for(var i=0; i<str.length; i++) {
+                    if(parseInt(str[i])>=0 && parseInt(str[i])<=9) {
+                        myCount.push(str[i]);
+                    }
+                } console.log(myCount.length);
+            }
+            newFunction("4, 8,  1, Katya, shkola, 0, 27, q5");
+            
+            
+            var newFunction = function(str) {
+                 var regExp = /\d/gi;
+                 var newArr = [];
+                 var res;
+                 while((res = regExp.exec(str)) !== null) {
+                    newArr.push(res[0]);
+                 } console.log(newArr);
+            }
+            newFunction("4, 8,  1, Katya, shkola, 0, 27, q5");
+            
+        </script>
+	</body>
+</html>
