@@ -1,0 +1,50 @@
+<html>
+	<body>
+        <p>Canada is a country, consisting of ten provinces and three territories, in the northern part of the continent of North America. It extends from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres (3.85 million square miles) in total, making it the world's second-largest country by total area and the fourth-largest country by land area. Canada's common border with the United States forms the world's longest land border.</p>
+        <input type="color" id="firstcolor" />
+        <input type="color" id="secondcolor" />
+        <input type="text" id="myspeed">
+        <input type="button" id="mybutton1" value="Start" />
+        <input type="button" id="mybutton2" value="Stop" />
+            
+		<style></style>
+        
+		<script>
+            mybutton1.onclick = function() {
+                console.log(firstcolor.value, secondcolor.value);
+                var myRed1 = firstcolor.value.substr(1, 2);
+                var myRed2 = secondcolor.value.substr(1, 2);
+                
+                var myGreen1 = firstcolor.value.substr(3, 2);
+                var myGreen2 = secondcolor.value.substr(3, 2);
+                
+                var myBlue1 = firstcolor.value.substr(5, 2);
+                var myBlue2 = secondcolor.value.substr(5, 2);
+                
+                console.log(myRed1, myRed2, myGreen1, myGreen2, myBlue1, myBlue2);
+                
+                var redDiff = Math.floor((parseInt(myRed2, 16) - parseInt(myRed1, 16)) / 10);
+                var greenDiff = Math.floor((parseInt(myGreen2, 16) - parseInt(myGreen1, 16)) / 10);
+                var blueDiff = Math.floor((parseInt(myBlue2, 16) - parseInt(myBlue1, 16)) / 10);
+                console.log(redDiff, greenDiff, blueDiff);
+                
+                var par = document.getElementsByTagName("p")[0];
+                par.style.color = firstcolor.value;
+                
+                myRed1 = parseInt(myRed1, 16);
+                myGreen1 = parseInt(myGreen1, 16);
+                myBlue1 = parseInt(myBlue1, 16);
+                
+                var changedColor = setInterval(function() {
+                    myRed1 += redDiff; //perevesti stroky v chislo
+                    myGreen1 += greenDiff;
+                    myBlue1 += blueDiff;
+                    
+                    par.style.color = "rgb("+myRed1+","+myGreen1+","+myBlue1+")";
+                    console.log(par.style.color);
+                }, myspeed.value);
+                
+            }
+        </script>
+	</body>
+</html>
