@@ -1,0 +1,55 @@
+<html>
+	<body>
+        <style>
+            #ball {
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                border-radius: 50px;
+                position: absolute;
+                left: 200px;
+                top: 200px;
+            }
+        </style>
+        
+        <div id="myCircle">
+            <input type="text" id="myRadius" placeholder="radius">
+            <input type="text" id="mySpeed" placeholder="speed">
+            <input type="button" id="myStart" value="Start">
+            <input type="button" id="myStop" value="Stop">
+        </div>
+        <div id="ball">
+            
+        </div>
+            
+		<script>
+            var angle = 0;
+            
+            myStart.onclick = function() {
+                var x = ball.offsetTop;
+                var y = ball.offsetLeft;  
+                var newDiv = document.createElement("div");
+                document.body.appendChild(newDiv);
+                newDiv.style.position = "absolute";
+                newDiv.style.left = y-myRadius.value+"px";
+                newDiv.style.top = x-myRadius.value+"px";
+                newDiv.style.width = myRadius.value*2+"px";
+                newDiv.style.height = myRadius.value*2+"px";
+                newDiv.style.border = "10px solid black";
+                newDiv.style.borderRadius = myRadius.value+"px";
+                
+                myAnimation = setInterval(function() {
+                    var stepX = parseInt(Math.sin(angle)*myRadius.value);
+                    var stepY = parseInt(Math.cos(angle)*myRadius.value);
+                    angle += 0.1;
+                    ball.style.top = (x+stepX)+"px";
+                    ball.style.left = (y+stepY)+"px";
+                }, mySpeed.value);
+            }
+            myStop.onclick = function() {
+                clearInterval(myAnimation);
+            }
+            
+        </script>
+	</body>
+</html>
