@@ -1,0 +1,15 @@
+
+<html>
+	<body>
+		<style></style>
+		<script>
+            var myDiv = document.createElement("div");
+            document.body.appendChild(myDiv);
+            setInterval(function() {
+                var currentTime = new Date();
+                var myLine = currentTime.getHours()+":"+currentTime.getMinutes()+":"+currentTime.getSeconds();
+                myDiv.innerHTML = myLine;
+            }, 1000)
+        </script>
+	</body>
+</html>
