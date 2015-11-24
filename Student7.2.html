@@ -1,0 +1,44 @@
+<html>
+	<body>
+        <input type="button" id="forbutton" value="forward" />
+        <input type="button" id="backbutton" value="backwords" />
+        <input type="button" id="begbutton" value="begin" />
+        <input type="button" id="endbutton" value="end" />
+        
+        <img src= "../images/0.jpg"  alt="count numbers" />
+        <marquee>Hello World!</marquee>
+            
+		<style></style>
+        
+		<script>
+            var picArray = ["../images/0.jpg", "../images/1.jpg", "../images/2.jpg", "../images/3.jpg", "../images/4.jpg", "../images/5.jpg"];
+            var count = 0;
+            var chosenPic = document.getElementsByTagName("img")[0];
+            forbutton.onclick = function() {
+                if(count==picArray.length-1) {
+                    count = -1;
+                }
+                count++;
+                chosenPic.src = picArray[count];
+            }
+            
+            backbutton.onclick = function() {
+                if(count==0) {
+                    count = picArray.length;
+                }
+                count--;
+                chosenPic.src = picArray[count];
+            }
+            
+            begbutton.onclick = function() {
+                count = 0;
+                chosenPic.src = picArray[count];
+            }
+            
+            endbutton.onclick = function() {
+                count = picArray.length-1;
+                chosenPic.src = picArray[count];
+            }
+        </script>
+	</body>
+</html>
