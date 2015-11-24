@@ -1,0 +1,30 @@
+<html>
+	<body>
+		<style></style>
+        
+        <div id="thisTime"></div>
+        
+		<script>
+            setInterval('setTimer()', 1000);
+            function setTimer() {
+                thisTime.innerHTML = "";
+                var myDate = new Date();
+                
+                var timeArr = myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds();
+                console.log(timeArr);
+                for(var i=0; i<timeArr.length; i++) {
+                    console.log(timeArr[i]);
+                    var newImage = document.createElement("img");
+                    newImage.style.width = "50px";
+                    newImage.style.height = "60px";
+                    thisTime.appendChild(newImage);
+                    if(timeArr[i]==":") {
+                        newImage.src = "../images/znak.png";
+                    } else {
+                        newImage.src = "../images/"+timeArr[i]+".jpg"
+                    }
+                }
+            }
+        </script>
+	</body>
+</html>
