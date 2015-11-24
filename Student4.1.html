@@ -1,0 +1,60 @@
+<html>
+	<body>
+        <style>
+            table {
+                margin: 20px;
+            }
+            td {
+                width: 20px;
+                height: 15px;
+                border: solid 1px red;
+                background: rgb(255, 12, 35);
+            }
+        </style>
+        
+        <p>The origin of the modern French Bulldog breed descends directly from the dogs of the Molossians, an ancient Greek tribe. The dogs were spread throughout the ancient world by Phoenician traders. British Molossian dogs were developed into the Mastiff. A sub-family of the Mastiff were the Bullenbeisser, a type of dog used for bull-baiting.</p>
+		
+		<script>
+            var par = document.getElementsByTagName("p")[0];//always returns an array!
+                        console.log(par);
+            var table1 = document.createElement("table");
+            document.body.appendChild(table1);
+            for(var i=0; i<10; i++) {
+                var myTr = document.createElement("tr");
+                table1.appendChild(myTr);
+                for(var j=0; j<10; j++) {
+                    var myTd = document.createElement("td");
+                    myTr.appendChild(myTd);
+                    myTd.style.backgroundColor = randomColor();
+                    
+                    myTd.onclick = function() {
+                        par.style.color = this.style.backgroundColor;
+                    }
+                }
+            }
+                function randomColor() {
+                    var red = Math.floor(Math.random()*255);
+                    var green = Math.floor(Math.random()*255);
+                    var blue = Math.floor(Math.random()*255);
+                    return "rgb"+"("+red+","+green+","+blue+")";
+                }
+                    
+             var table2 = document.createElement("table");
+            document.body.appendChild(table2);
+            for(var i=0; i<10; i++) {
+                var myTr1 = document.createElement("tr");
+                table2.appendChild(myTr1);
+                for(var j=0; j<10; j++) {
+                    var myTd1 = document.createElement("td");
+                    myTr1.appendChild(myTd1);
+                    myTd1.style.background = randomColor();
+                    
+                    myTd1.onclick = function() {
+                    par.style.backgroundColor = this.style.backgroundColor;
+                    }
+                }
+            }
+            
+        </script>
+	</body>
+</html>
