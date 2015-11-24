@@ -1,0 +1,16 @@
+<html>
+	<body>
+        <div id="myTimer"></div>
+		<style></style>
+		<script>
+           var myTime = document.getElementById("myTimer");
+           var count = 3600;
+           var newTimer = setInterval(function() {
+                count++;
+                var mySeconds = count%60<10 ? "0"+count%60 : count%60;
+                var myMinutes = (((count-count%60)/60)%60)<10 ? "0"+(((count-count%60)/60)%60) : (((count-count%60)/60)%60);
+                myTime.innerHTML = myMinutes+":"+mySeconds;
+           }, 1000);
+        </script>
+	</body>
+</html>
