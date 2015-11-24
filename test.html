@@ -1,0 +1,96 @@
+<!--
+<html>
+	<body>
+        <p>Hi!, My name is Kateryna., I have a <span>nice</span> dog.</p>
+        
+		<style>
+            p {
+                display: none;
+            }
+        </style>
+		<script>
+           var myParagraph = document.getElementsByTagName("p")[0];
+           var newPar = myParagraph.innerText.split(",");
+            
+            var i=0;
+            var wordsInterval = setInterval(function() {
+                var myDiv = document.createElement("div");
+                document.body.appendChild(myDiv);
+                myDiv.innerHTML = newPar[i];
+                    i++;
+                if(i==newPar.length) {
+                    clearInterval(wordsInterval);
+                }
+            }, 1000);
+                
+            
+//            var i=0;
+//                while(i<Infinity) {
+//                    i++;
+//                }
+//                for(var i=0; i<Infinity; i++) {
+//                
+//                }
+            
+            console.log(newPar);
+            
+        </script>
+	</body>
+</html>
+-->
+
+
+<html>
+	<body>
+        <p>Hi! My name is Kateryna. I have a <span>nice</span> dog.</p>
+        
+		<style>
+            p {
+                display: none;
+            }
+        </style>
+		<script>
+           var myParagraph = document.getElementsByTagName("p")[0];
+            var newPar = [];
+            var regExp = /[ a-z]+[!.]/gi;
+            var res;
+            while((res = regExp.exec(myParagraph.innerText))!==null) {
+                newPar.push(res[0]);
+                console.log(res);
+            }
+            
+            var i=0;
+            var myDiv = document.createElement("div");
+                document.body.appendChild(myDiv);
+            var letterInterval;
+            var wordsInterval = setInterval(function() {
+                if(typeof(letterInterval)!=="undefined") {
+                    clearInterval(letterInterval)
+                }
+                var j=0;
+                letterInterval = setInterval(function() {
+                    myDiv.innerHTML = newPar[i].substr(0, j);
+                    if(j<newPar[i].length) {
+                        j++;
+                    }
+                },100)
+                
+                
+                    i++;
+                if(i==newPar.length) {
+                    i=0;
+                }
+                myDiv.style.color = newColor();
+            }, 5000);
+            
+            function newColor() {
+                var red = Math.floor(Math.random()*255);
+                var green = Math.floor(Math.random()*255);
+                var blue = Math.floor(Math.random()*255);
+                
+                return "rgb("+red+","+green+","+blue+")";
+            }
+                
+        </script>
+	</body>
+</html>
