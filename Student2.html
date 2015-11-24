@@ -1,0 +1,57 @@
+<html>
+	<body>
+        <style>
+            img {
+                width: 430px;
+                height: 300px;
+            }
+            * {
+                margin: 15px 0 10px 15px
+            }
+        </style>
+        
+        <img src = "../images/IMG_0163.JPG" alt = "my french bulldog" />
+        </br>
+        <input type="button" id="for" value="Forward" />
+        <input type="button" id="back" value="Backwords" />
+        <input type="button" id="fst" value="First" />
+        <input type="button" id="lst" value="Last" />
+		
+		<script>
+            var image = document.getElementsByTagName("img")[0];
+            var myPhoto = ["../images/IMG_0163.JPG", "../images/Screen Shot1.png", "../images/Screen Shot2.png", "../images/Screen Shot3.png"];
+            var count = 0;
+            var myButton1 = document.getElementById("for");
+            myButton1.onclick = function() {
+                if(count == myPhoto.length-1) {
+                    count = 0;
+                } else {
+                    count++;
+                }
+                image.src = myPhoto[count];
+            }
+            
+            var myButton2 = document.getElementById("back");
+            myButton2.onclick = function() {
+                if(count == 0) {
+                    count = myPhoto.length-1;
+                } else {
+                    count --;
+                }
+                image.src = myPhoto[count];
+            }
+            
+            var myButton3 = document.getElementById("fst");
+            myButton3.onclick = function() {
+                image.src = myPhoto[0];
+                count = 0;
+            }
+            
+            var myButton4 = document.getElementById("lst");
+            myButton4.onclick = function() {
+                image.src = myPhoto[myPhoto.length-1];
+                count = myPhoto.length-1;
+            }
+        </script>
+	</body>
+</html>
