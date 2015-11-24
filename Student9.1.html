@@ -1,0 +1,52 @@
+<html>
+	<body>
+        <style>
+            #myButton {
+                margin-top: 15px;
+            }
+        </style>
+        
+        <select id="first">
+            <option value="0">Padding</option>
+            <option value="1">Border</option>
+            <option value="2">Color</option>
+        </select>
+        
+        <select id="second">
+            <option value="0">10px</option>
+            <option value="1">20px</option>
+            <option value="2">30px</option>
+        </select>
+        </br>
+        <input type="button" id="myButton" value="Submit">
+		<p>Spears was established as a pop icon and credited with influencing the revival of teen pop during the late 1990s. She became the 'best-selling teenaged artist of all time' and garnered honorific titles including the "Princess of Pop". Her work has earned her numerous awards and accolades, including a Grammy Award, six MTV Video Music Awards including the Lifetime Achievement Award, nine Billboard Music Awards, and a star on the Hollywood Walk of Fame.</p>
+        
+        
+		<script>
+            var selectedOptions = [["10px", "20px", "30px"], 
+                                   ["solid 3px red", "outset 10px green", "groove 7px blue"], 
+                                   ["#FA0074", "#EE9904", "#79BC66"]];
+            first.onchange = function() {
+                second.innerHTML = "";
+                for(var j=0; j<selectedOptions[parseInt(first.value)].length; j++) {
+                    var newSelect = document.createElement("option");
+                    second.appendChild(newSelect);
+                    newSelect.innerHTML = selectedOptions[parseInt(first.value)][j];
+                    newSelect.value = j;
+                }
+            }
+            //first.value = stroki, a j and second.value = yachejka;
+            myButton.onclick = function() {
+                var par = document.getElementsByTagName("p")[0];
+                switch(first.value) {
+                    case "0": par.style.padding = selectedOptions[0][parseInt(second.value)];
+                        break;
+                    case "1": par.style.border = selectedOptions[1][parseInt(second.value)];
+                        break;
+                    case "2": par.style.color = selectedOptions[2][parseInt(second.value)];
+                        break;
+                }
+            }
+        </script>
+	</body>
+</html>
