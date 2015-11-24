@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<body>
+        <form>
+            <input type="number" id="cells" placeholder="cells" required min="1" />
+            <input type="number" id="columns" placeholder="columns" required min="1" />
+            <input type="submit" id="myButton" />
+            <input type="number" id="min" />
+            <input type="number" id="max" />
+        </form>
+		<style></style>
+		<script>
+            window.onload = function() {
+                var newCells = document.getElementById("cells");
+                var newColumns = document.getElementById("columns");
+                var newButton = document.getElementById("myButton");
+                var newMin = document.getElementById("min");
+                var newMax = document.getElementById("max");
+                var newAdd;
+            
+                newButton.onclick = function() {
+//                    if(newCells.value<1 || newCells.value.length==0) {
+//                        alert("Please enter numbers bigger than 1");
+//                        return false;
+//                    } if(newColumns.value<1 || newColumns.value.length==0) {
+//                        alert("Please enter numbers bigger than 1");
+//                        return false;
+//                    }
+                    if(newMin.value.length==0) {
+                        newMin.value = 0;
+                    } if(newMax.value.length==0) {
+                        newMax.value = 100;
+                    }
+                var newTable = document.createElement("table");
+                document.body.appendChild(newTable);
+                    for(var i=0; i<newCells.value; i++) {
+                        var myTr = document.createElement("tr");
+                        newTable.appendChild(myTr);
+                        for(var j=0; j<newColumns.value; j++) {
+                            var newStr = "";
+                            var myTd = document.createElement("td");
+                            myTr.appendChild(myTd);
+                            myTd.innerHTML = Math.floor(Math.random()*(parseInt(newMax.value)-parseInt(newMin.value))+parseInt(newMin.value));
+                            myTd.onclick = function() {
+                                newStr = this.innerHTML;
+                                this.innerHTML = 0;
+                                
+                                var myDiv = document.getElementsByTagName("div");
+                                    if(typeof(newAdd)=="undefined" && myDiv.length==1) {
+                                        newAdd = document.createElement("button");
+                                        document.body.appendChild(newAdd);
+                                        newAdd.innerHTML = "Add"
+                                        
+                                newAdd.onclick = function() {
+                                    var sum = 0;
+                                    var addNumbers = document.getElementsByTagName("div");
+                                        for(var i=0; i<addNumbers.length; i++) {
+                                            sum += parseInt(addNumbers[i].innerHTML);
+                                        }
+                                        alert(sum);
+                                    }
+                                }
+
+                                var newDiv = document.createElement("div");
+                                if(newDiv.length==0) {
+                                    document.body.appendChild(newDiv);
+                                } else {
+                                    document.body.insertBefore(newDiv, newAdd);
+                                }
+                                newDiv.innerHTML = newStr;
+                            }
+                            
+                            myTd.style.width = "15px";
+                            myTd.style.border = "solid green 3px";
+                        }
+                    }
+                    return false;
+                }
+            }
+        </script>
+	</body>
+</html>
