@@ -1,0 +1,51 @@
+<html>
+	<body>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+		<style>
+            td {
+                border: solid 3px black;
+                width: 40px; 
+                height: 40px; 
+                padding: 15px;
+            }
+        </style>
+		<script>
+            var myTable = document.getElementsByTagName("table")[0];
+            //myTable.rows[0].cells[0].style.backgroundColor = "blue";
+            for(var i=0; i<myTable.rows.length; i++) {
+                for(var j=0; j<myTable.rows[i].cells.length; j++) {
+                    if(myTable.rows[i].cells.length-i>j) {
+                        myTable.rows[i].cells[j].style.backgroundColor = "yellow";
+                    } else {
+                        myTable.rows[i].cells[j].style.backgroundColor = "blue";
+                    }
+                }
+            }
+        </script>
+	</body>
+</html>
