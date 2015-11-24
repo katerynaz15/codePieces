@@ -1,0 +1,87 @@
+//open only with firefox
+<html>
+	<body>
+		<style></style>
+		<script>
+            var myMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var myYear = ["2013", "2014", "2015"];
+            
+            var selectedMonth = document.createElement("select");
+            document.body.appendChild(selectedMonth);
+            for(var i=0; i<myMonths.length; i++) {
+                var monthOption = document.createElement("option");
+                selectedMonth.appendChild(monthOption);
+                monthOption.innerHTML = myMonths[i];
+                monthOption.value = myMonths[i];
+            }
+            
+            var selectedYear = document.createElement("select");
+            document.body.appendChild(selectedYear);
+            for(var i=0; i<myYear.length; i++) {
+                var yearOption = document.createElement("option");
+                selectedYear.appendChild(yearOption);
+                yearOption.innerHTML = myYear[i];
+                yearOption.value = myYear[i];
+            }
+            var myButton = document.createElement("button");
+            document.body.appendChild(myButton);
+            myButton.innerHTML = "Submit";
+            
+            var myBr = document.createElement("br");
+            document.body.appendChild(myBr);
+            myButton.onclick = function() {
+				
+                var month  = selectedMonth.value;
+                var year =selectedYear.value;
+				  console.log(year, month);
+                var myDate = new Date(year+" "+month+" "+1);
+				 
+                
+                var myTable = document.createElement("table");
+                document.body.appendChild(myTable);
+                var myCaption = document.createElement("caption");
+                myTable.appendChild(myCaption);
+                myCaption.innerHTML = year+" "+month;
+                
+                var myThead = document.createElement("thead");
+                myTable.appendChild(myThead);
+                var myTr = document.createElement("tr");
+                myThead.appendChild(myTr);
+                
+                var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    for(var i=0; i<weekDays.length; i++) {
+                        var myTh = document.createElement("th");
+                        myTr.appendChild(myTh);
+                        myTh.innerHTML = weekDays[i];
+                    }
+                console.log("qqqq")
+                var myRows = 0;
+           var ourDate = 32 - new Date(year+" "+ month+" "+ 32).getDate();
+			  // var ourDate = new Date(year+" "+ month+" "+ 32)
+                var dayNum = 1;
+				//console.log(ourDate)
+               while(ourDate>0) {
+				  // for(var i=0;i<ourDate;i++){
+                    if(myRows==0) {
+                        var thisRow = document.createElement("tr");
+                        myTable.appendChild(thisRow);
+                    }
+                    var myTd = document.createElement("td");
+                    thisRow.appendChild(myTd);
+                        if(myRows==new Date(year+" "+month+" "+dayNum).getDay()) {
+                            myTd.innerHTML = dayNum;
+                            dayNum++;
+                            ourDate--;
+                        }
+                            myRows++;
+                                if(myRows==7) {
+                                    myRows=0;
+                    }
+               }
+               
+                //console.log(myDate.getDay(), myDate.getDate());
+            }
+			
+        </script>
+	</body>
+</html>
