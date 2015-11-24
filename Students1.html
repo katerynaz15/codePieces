@@ -1,0 +1,71 @@
+<html>
+	<body>
+        <style>
+            div {
+                height: 150px;
+                width: 300px;
+                overflow: scroll;
+            }
+        </style>
+        
+        <div id="myText">
+            WhatisnowCaliforniawasfirstsettledbyvariousNativeAmericantribesbeforebeing explored by a number of European expeditions during the 16th and 17th centuries. It was then claimed by the Spanish Empire as part of Alta California in the larger territory of New Spain. Alta California became a part of Mexico in 1821 following its successful war for independence, but was ceded to the United States in 1848 after the Mexican–American War. The western portion of Alta California was organized as the State of California, which was admitted as the 31st state on September 9, 1850. The California Gold Rush starting in 1848 led to dramatic social and demographic change, with large-scale immigration from the east and abroad with an accompanying economic boom.
+        </div>
+		
+		<script>
+            function myFunc(id, dir, delay, speed) {
+                setTimeout(function() {
+                    myDelay = document.getElementById(id);
+                    //myDelay.setAttribute("class", dir);
+                    myInterval = setInterval(function() {
+                        switch(dir) {
+                            case "bottom": if(myDelay.scrollTop<myDelay.scrollHeight/2) {
+                                myDelay.scrollTop ++;
+                            } else {
+                                clearInterval(myInterval);
+                                myFunc("myText", "top", 0, 100)
+                            }
+                                break;
+                            case "top": if(myDelay.scrollTop>0) {
+                                myDelay.scrollTop --;
+                            } else {
+                                clearInterval(myInterval);
+                                myFunc("myText", "bottom", 0, 100)
+                            }
+                                break;
+                            case "left": if(myDelay.scrollLeft<209) {
+                                myDelay.scrollLeft ++;
+                            } else {
+                                clearInterval(myInterval);
+                                myFunc("myText", "right", 0, 100)
+                            }
+                                break;
+                            case "right": if(myDelay.scrollLeft>0) {
+                                myDelay.scrollLeft --;
+                            } else {
+                                clearInterval(myInterval);
+                                myFunc("myText", "left", 0, 100);
+                            }
+                                break;
+                        }
+                    }, speed)
+                            myDelay.onmouseover = function() {
+                            clearInterval(myInterval)
+                        }
+                            myDelay.onmouseout = function() {
+                            myFunc("myText", dir, 0, 100); //myDelay.getAttribute("class") instead of dir
+                        }
+                    }, delay)
+                
+                
+                
+            }
+            
+            myFunc("myText", "left", 0, 100);
+//            setTimeout(function() {
+//                clearInterval(myInterval);
+//                myFunc("myText", "top", 0, 100);
+//            }, 3000);
+        </script>
+	</body>
+</html>
