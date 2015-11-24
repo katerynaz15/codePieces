@@ -1,0 +1,188 @@
+<html>
+	<body>
+		<style>
+            td {
+                height: 30px;
+                border: solid black 2px;
+            }
+            .deleteB {
+                background-color: red;
+                border-radius: 5px;
+            }
+        </style>
+		<script>
+            var clientData = [{
+                name: "Katya",
+                lastName: "Zabashta",
+                DOB: "04/15/1988",
+                hobby: "Javascript"
+            }, {
+                name: "Dima",
+                lastName: "Perkin",
+                DOB: "06/18/1987",
+                hobby: "Dogs"
+            }, {
+                name: "Irina",
+                lastName: "Yakimceva",
+                DOB: "09/14/1938",
+                hobby: "Gardening"
+            }];
+            
+            var myTable = document.createElement("table");
+            document.body.appendChild(myTable);
+            var newButton = document.createElement("button");
+            document.body.appendChild(newButton);
+            newButton.innerHTML = "New Stuff!";
+            for(var i=0; i<clientData.length; i++) {
+                var myTr = document.createElement("tr");
+                myTable.appendChild(myTr);
+                var jCount = 0;
+                for(var j in clientData[i]) {
+                    var myTd = document.createElement("td");
+                    myTr.appendChild(myTd);
+                    myTd.innerHTML = clientData[i][j];
+                    
+//                    myTd.onclick = function() {
+//                        var meaningOfTd = this.innerHTML;
+//                        this.innerHTML = "";
+//                        var newInput = document.createElement("input");
+//                        this.appendChild(newInput);
+//                        newInput.value = meaningOfTd;
+//                        newInput.setAttribute("autofocus", "autofocus");
+//                        
+//                        newInput.onblur = function() {
+//                            this.parentNode.innerHTML = this.value;
+//                        } 
+//                    }
+                    
+                    myTd.setAttribute("contenteditable", "true");
+                    myTd.setAttribute("class", "rowsCells:"+i+":"+jCount);
+                    jCount++;
+                    myTd.onkeypress = function(event) {
+                        if(event.keyCode==13) {
+                            this.blur();
+                            return false;
+                        }
+                    }
+                    
+                    myTd.onkeydown = function(event) {
+                        switch(event.keyCode) {
+                            case 38 : 
+                                var goUp = this.getAttribute("class").split(":");
+                                if(goUp[1]==0) {
+                                    goUp[1] = myTable.rows.length;
+                                }
+                                myTable.rows[--goUp[1]].cells[goUp[2]].focus();
+                                break;
+                            case 40 : 
+                                var goDown = this.getAttribute("class").split(":");
+                                if(goDown[1]==myTable.rows.length-1) {
+                                    goDown[1] = -1;
+                                }
+                                myTable.rows[++goDown[1]].cells[goDown[2]].focus();
+                                break;
+                            case 37 : 
+                                var goLeft = this.getAttribute("class").split(":");
+                                if(goLeft[2]==0) {
+                                    goLeft[2] = myTable.rows[goLeft[1]].cells.length-1;
+                                }
+                                myTable.rows[goLeft[1]].cells[--goLeft[2]].focus();
+                                break;
+                            case 39 : 
+                                var goRight = this.getAttribute("class").split(":");
+                                if(goRight[2]==myTable.rows[goRight[1]].cells.length-2) {
+                                    goRight[2] = -1;
+                                }
+                                myTable.rows[goRight[1]].cells[++goRight[2]].focus();
+                                break;
+                        }
+                    }
+                }
+                var myDelete = document.createElement("td");
+                        myTr.appendChild(myDelete);
+                        myDelete.setAttribute("class", "deleteB");
+                        myDelete.innerHTML = "x";
+                        myDelete.onclick = function() {
+                            myTable.removeChild(this.parentNode);
+                    }
+            }
+            
+//             function deleteThis() {
+//                var myDelete = document.createElement("td");
+//                    myTr.appendChild(myDelete);
+//                    myDelete.setAttribute("class", "deleteB");
+//                    myDelete.innerHTML = "x";
+//                    myDelete.onclick = function() {
+//                        myTable.removeChild(this.parentNode);
+//                    }
+//            }
+            
+            newButton.onclick = function() {
+                var i = myTable.rows.length; //initially we had a set number of rows (3rows with index 2). Adding new rows we rewrite their quantity and reset i;
+                var myTr = document.createElement("tr");
+                myTable.appendChild(myTr);
+                var jCount = 0;
+                for(var j in clientData[0]) {
+                    var myTd = document.createElement("td");
+                    myTr.appendChild(myTd);
+                    myTd.setAttribute("contenteditable", "true");
+                    myTd.setAttribute("class", "rowsCells:"+i+":"+jCount);
+                    jCount++;
+                    myTd.onfocus = function() {
+                        this.style.backgroundColor = "blue";
+                    }
+                    myTd.onblur = function() {
+                        this.style.backgroundColor = "white";
+                    }
+                    
+                    myTd.onkeydown = function(event) {
+                        switch(event.keyCode) {
+                            case 38 : 
+                                var goUp = this.getAttribute("class").split(":");
+                                if(goUp[1]==0) {
+                                    goUp[1] = myTable.rows.length;
+                                }
+                                myTable.rows[--goUp[1]].cells[goUp[2]].focus();
+                                break;
+                            case 40 : 
+                                var goDown = this.getAttribute("class").split(":");
+                                if(goDown[1]==myTable.rows.length-1) {
+                                    goDown[1] = -1;
+                                }
+                                myTable.rows[++goDown[1]].cells[goDown[2]].focus();
+                                break;
+                            case 37 : 
+                                var goLeft = this.getAttribute("class").split(":");
+                                if(goLeft[2]==0) {
+                                    goLeft[2] = myTable.rows[goLeft[1]].cells.length-1;
+                                }
+                                myTable.rows[goLeft[1]].cells[--goLeft[2]].focus();
+                                break;
+                            case 39 : 
+                                var goRight = this.getAttribute("class").split(":");
+                                if(goRight[2]==myTable.rows[goRight[1]].cells.length-2) {
+                                    goRight[2] = -1;
+                                }
+                                myTable.rows[goRight[1]].cells[++goRight[2]].focus();
+                                break;
+                        }
+                    }
+                    
+                myTd.onkeypress = function(event) {
+                        if(event.keyCode==13) {
+                            this.blur();
+                            return false;
+                        }
+                    }  
+                } var myDelete = document.createElement("td");
+                    myTr.appendChild(myDelete);
+                    myDelete.setAttribute("class", "deleteB");
+                    myDelete.innerHTML = "x";
+                    myDelete.onclick = function() {
+                        myTable.removeChild(this.parentNode);
+                }  
+            };
+        </script>
+	</body>
+</html>
+
