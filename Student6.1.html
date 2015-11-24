@@ -1,0 +1,66 @@
+<html>
+	<body>
+		<style></style>
+        
+        <textarea id="textarea"></textarea>
+        <input type="time" id="settime" />
+        <input type="button" id="startbutton" value="Start" />
+        
+		<script>
+            var count = 1;
+            var newArr = [];
+            
+            
+            startbutton.onclick = function() {
+                var myDiv = document.createElement("div");
+               
+                myDiv.setAttribute("class", "div");
+                document.body.appendChild(myDiv);
+                
+                var myTable = document.createElement("table");
+                myDiv.appendChild(myTable);
+                var myTr = document.createElement("tr");
+                myTable.appendChild(myTr);
+                
+                var myTd = document.createElement("td");
+                myTr.appendChild(myTd);
+                myTd.innerHTML = textarea.value;
+                
+                var myTd1 = document.createElement("td");
+                myTr.appendChild(myTd1);
+                myTd1.innerHTML = settime.value;
+                
+                var myTd2 = document.createElement("td");
+                myTr.appendChild(myTd2);
+                var newButton = document.createElement("button");
+                myTd2.appendChild(newButton);
+                newButton.innerHTML = "Delete";
+                newButton.setAttribute("id", count);
+                
+                var myDate = new Date();
+                console.log(settime.value);
+                
+                var settingTime = settime.value.split(":");
+                
+                var clientSetToMilisec = parseInt(settingTime[0])*60*60*1000 + parseInt(settingTime[1])*60*1000; 
+                var currentSetToMilisic = parseInt(myDate.getHours())*60*60*1000 + parseInt(myDate.getMinutes())*60*1000 + parseInt(myDate.getSeconds())*1000 + parseInt(myDate.getMilliseconds());
+                
+                var setDifference = clientSetToMilisec - currentSetToMilisic;
+                console.log(setDifference);
+                newArr[count-1] = setTimeout(function() {
+                    alert(textarea.value);
+                }, setDifference)
+                
+                newButton.onclick = function() {
+                    var deletedDiv = document.getElementsByClassName("div");
+                    document.body.removeChild(deletedDiv[parseInt(this.id)])
+                    clearInterval(newArr[parseInt(this.id)]);
+                }
+                
+             count++;
+            }
+            
+            
+        </script>
+	</body>
+</html>
