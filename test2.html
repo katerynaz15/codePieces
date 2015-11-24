@@ -1,0 +1,35 @@
+<html>
+	<body>
+		<style>
+            td {
+                border: solid 2px black;
+                width: 25px;
+                height: 25px;
+            }
+        </style>
+		<script>
+            var myTable = document.createElement("table");
+            document.body.appendChild(myTable);
+            for(var i=0; i<10; i++) {
+                var myRows = document.createElement("tr");
+                myTable.appendChild(myRows);
+                for(var j=0; j<10; j++) {
+                var myCol = document.createElement("td");
+                myRows.appendChild(myCol);
+                    var randomNum = Math.floor(Math.random()*100);
+                    myCol.innerHTML = randomNum;
+                    if(i==j) {
+                        myCol.style.backgroundColor = "red";
+                        }
+                    
+                    //myTable.rows[i].cells[j].style.backgroundColor = "yellow";
+                        
+                        myCol.onclick = function() {
+                            this.style.backgroundColor = "yellow";
+                            console.log(this.innerHTML);
+                    }
+                }
+            }
+        </script>
+	</body>
+</html>
