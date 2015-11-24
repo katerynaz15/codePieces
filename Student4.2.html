@@ -1,0 +1,30 @@
+<html>
+	<body>
+		<style>
+            img {
+                width; 100px;
+                height: 100px;
+            }
+        </style>
+        
+        <div id="ref">
+            <a href="1.doc">doc</a>
+            <a href="1.xls">xls</a>
+            <a href="1.pdf">pdf</a>
+        </div>
+        
+		<script>
+            var myDiv = document.getElementById("ref");
+            var thisA = myDiv.getElementsByTagName("a");
+                for(var i=0; i<thisA.length; i++) {
+                    var name = thisA[i].getAttribute("href").split(".").pop();
+                    console.log(name);
+                    console.log("../images/"+name+".gif");
+                    var myPic = document.createElement("img");
+                    myDiv.insertBefore(myPic, thisA[i]);
+                    myPic.src = "../images/"+name+".gif";
+                }
+            
+        </script>
+	</body>
+</html>
