@@ -1,0 +1,96 @@
+<html>
+	<body>
+        
+		<style></style>
+		<script>
+//            var setInterval1 = setInterval(function() {}, 1000);
+//            clearInterval(setInterval1);
+//            setTimeout(function() {}, 2000);
+//            //clearTimeout;
+//            
+//            50 - 70
+//            Math.random()*20+50;
+//            Math.round();
+//            Math.floor(5.9) = 5;
+//            Math.ceil(5.1) = 6;
+//            (6.56125367).toExponential(3) = 6.561;
+//            
+//            if() {}
+//            else if {}
+//            else {}
+//            
+//            () ? : ();
+//            
+//            switch() {
+//                case"" : 
+//                    jlkjlkj;
+//                    break;
+//                default: 
+//                    fhksjfhdkjh;
+//                    break
+//            }
+//            
+//            
+//            ()
+//            ++count = highest priority;
+//            */
+//            +-
+//            =
+//            count++
+//            
+//            String 
+//            Number
+//            Boolean
+            
+//            var myFunction = function() {};
+            
+//            function myFunction() {};
+            
+//            var myFunction = new Function("arr", "min", "max", "var newArray = []; var sum = 0; for(var i=0; i<arr; i++) { newArray.push(Math.floor(Math.random()*(max-min)+min));}newArray.sort(function(a, b){return b-a});for(var i=0; i<newArray.length; i++) {if(newArray[i]%2==0 && i%2==0) {sum += newArray[i];}}console.log(newArray, sum);")
+//            myFunction(10, -100, 100);
+//            
+            
+            
+            var myArray = function(arr, min, max) {
+                var newArray = [];
+                var sum = 0;
+                for(var i=0; i<arr; i++) {
+                    newArray.push(Math.floor(Math.random()*(max-min)+min));
+                }
+                newArray.sort(function(a, b){return b-a});
+                
+                for(var i=0; i<newArray.length; i++) {
+                    if(newArray[i]%2==0 && i%2==0) {
+                        sum += newArray[i];
+                    }
+                }
+                console.log(newArray, sum);
+            }
+            myArray(10, -100, 100);
+            
+            
+            
+            
+            var newStr = function() {
+                var sum = 0;
+                for(var i=0; i<arguments.length; i++) {
+                    sum += arguments[i];
+                }
+                console.log(sum);
+            }
+            newStr(1, 4, 7, " string ", 1, 9, 20);
+            
+            
+            
+            
+            var myFunction = function(key, num1, num2) {
+                if(key) {
+                    console.log(Math.pow(num1, num2));
+                } else {
+                    console.log(Math.pow(num1, 1/num2));
+                }
+            };
+            myFunction(false, 2, 4);
+        </script>
+	</body>
+</html>
