@@ -1,0 +1,58 @@
+<html>
+	<body>
+        <textarea id="numbers" placeholder="Enter your numbers"></textarea>
+        <input type="button" id="myButton" value="Positive numbers" />
+        <input type="button" id="myButton1" value="Negative numbers" />
+        <input type="button" id="myButton2" value="Middle Arithmetic Num" />
+        <input type="button" id="myButton3" value="New Array" />
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+		<style>
+            
+        </style>
+		<script>
+            var txtArea = document.getElementById("numbers");
+            var divBlock = document.getElementsByTagName("div");
+            var myButton = document.getElementById("myButton");
+            var myButton1 = document.getElementById("myButton1");
+            var myButton2 = document.getElementById("myButton2");
+            var myButton3 = document.getElementById("myButton3");
+            
+            myButton.onclick = function() {
+                var myText = txtArea.value.split(",");
+                console.log(myText);
+                var positive = myText.filter(function() {return arguments[0]>0});
+                divBlock[0].innerHTML = positive;
+            }
+            
+            myButton1.onclick = function() {
+                var myText = txtArea.value.split(",");
+                console.log(myText);
+                var negative = myText.filter(function() {return arguments[0]<0});
+                divBlock[1].innerHTML = negative;
+            }
+            
+            myButton2.onclick = function() {
+                var myText = txtArea.value.split(",");
+                console.log(myText);
+                var newNum = myText.reduce(function(a, b) {return parseInt(a)+parseInt(b)})/myText.length;
+                //var newNum2 = newNum/myText.length;
+                divBlock[2].innerHTML = newNum;
+            }
+            
+            myButton3.onclick = function() {
+                var myText = txtArea.value.split(",");
+                var nullNum = myText.map(function(el) {
+                    if(el==0) {
+                        return "Hello World";
+                    } else {
+                        return el;
+                    }
+                });
+                divBlock[3].innerHTML = nullNum.join(", ");
+            }
+        </script>
+	</body>
+</html>
