@@ -1,0 +1,61 @@
+<html>
+	<body>
+        <textarea id="numbers" placeholder="Enter your numbers"></textarea>
+        <input type="button" id="myButton" value="Multiply" />
+        <input type="button" id="myButton2" value="Delete" />
+        </br>
+        <input type="text" id="firstNum" placeholder="First Number" />
+        <input type="text" id="secondNum" placeholder="Second Number" />
+        <input type="button" id="myButton1" value="Sum" />
+        
+        <div></div>
+        <div></div>
+        <div></div>
+		<style>
+            
+        </style>
+		<script>
+            var txtArea = document.getElementById("numbers");
+            var divBlock = document.getElementsByTagName("div");
+            var myButton = document.getElementById("myButton");
+            var myButton1 = document.getElementById("myButton1");
+            var myButton2 = document.getElementById("myButton2");
+            var input1 = document.getElementById("firstNum");
+            var input2 = document.getElementById("secondNum");
+            
+            
+            myButton.onclick = function() {
+                var myText = txtArea.value.split(",");
+                var evenNum = myText.filter(function(el, ind) {return ind%2==0});
+                var mlt = evenNum.reduce(function(a, b) {return parseInt(a)*parseInt(b)});
+                divBlock[0].innerHTML = mlt;
+            }
+            
+            myButton1.onclick = function() {
+                var myText = txtArea.value.split(", ");
+                var myInput1 = input1.value;
+                var myInput2 = input2.value;
+                
+                var newArr = myText.filter(function(el) {return parseInt(el)>parseInt(myInput1) && parseInt(el)<parseInt(myInput2)});
+                //console.log(newArr);
+                var mySum = newArr.reduce(function(a, b) {return parseInt(a)+parseInt(b)});
+                divBlock[1].innerHTML = mySum;
+            }
+            
+            myButton2.onclick = function() {
+                var myText = txtArea.value.split(", ");
+                var everythingButPositive = myText.filter(function(el) {return el<=0});
+                for(var i=everythingButPositive.length; i<myText.length; i++) {
+                    everythingButPositive.push("0");
+                };
+                divBlock[2].innerHTML = everythingButPositive.join(", ");
+                
+                /*var arr = [1,2,3,4,5,-4,-6,0,-3,-2,-9,0,7,5];
+                var new_arr = arr.filter(function(el){return el<=0;});
+                new_arr = new_arr.concat(new Array(arr.length-new_arr.length).fill(0));
+                console.log(new_arr);*/
+            }
+            
+        </script>
+	</body>
+</html>
