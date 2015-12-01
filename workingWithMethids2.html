@@ -1,0 +1,50 @@
+<html>
+	<body>
+        <textarea id="numbers" placeholder="Enter your numbers"></textarea>
+        <input type="button" id="myButton" value="Sum" />
+        <input type="button" id="myButton1" value="New Array" />
+        <input type="button" id="myButton2" value="Sort" />
+        
+        <div></div>
+        <div></div>
+        <div></div>
+		<style>
+            
+        </style>
+		<script>
+            var txtArea = document.getElementById("numbers");
+            var divBlock = document.getElementsByTagName("div");
+            var myButton = document.getElementById("myButton");
+            var myButton1 = document.getElementById("myButton1");
+            var myButton2 = document.getElementById("myButton2");
+            
+            
+            myButton.onclick = function() {
+                var myText = txtArea.value.split(",");
+                var mySum = myText.filter(function(el) {return el<0}).reduce(function(a, b) {return parseInt(a)+parseInt(b)});
+                divBlock[0].innerHTML = mySum;
+                
+            }
+            
+            myButton1.onclick = function() {
+                var myText = txtArea.value.split(", ");
+                var newArr = myText.slice(myText.indexOf("0")+1, myText.lastIndexOf("0"));
+                console.log(newArr);
+                var mlt = newArr.reduce(function(a, b) {return parseInt(a)*parseInt(b)});
+                divBlock[1].innerHTML = mlt;  
+                
+                /*var newArr1 = myText.slice(2, 3); //copy to new Array (first index and last index)
+                console.log(newArr1, myText);
+                var newArr2 = myText.splice(2, 3);
+                console.log(newArr2, myText);*/ 
+            }
+            
+            myButton2.onclick = function() {
+                var myText = txtArea.value.split(", ");
+                var myArray = myText.sort(function(a, b) {return parseInt(b)-parseInt(a)});
+                divBlock[2].innerHTML = myArray.join(", ");
+            }
+            
+        </script>
+	</body>
+</html>
